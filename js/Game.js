@@ -13,15 +13,28 @@ class Game {
             {phrase: 'A blessing in disguise'}
         ];
         this.activePhrase = null;
-    }
+    };
 
     /**
      * Selects random phrase from phrases property
-     * @return {Object} Phrase object chosed to be used
+     * @return {Object} Phrase object chosen to be used
      */
 
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
-    }
+    };
+
+    /**
+     * Begins game by selecting a random phrase and displaying it to the user
+     */
+
+    startGame() {
+        const overlay = document.querySelector('#overlay');
+        overlay.style.display = 'none';
+        const randomPhrase = game.getRandomPhrase().phrase;
+        const newPhrase = new Phrase(randomPhrase);
+        newPhrase.addPhraseToDisplay();
+        game.activePhrase = randomPhrase;
+    };
 
 }
