@@ -6,11 +6,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            {phrase: 'Once upon a time'},
-            {phrase: 'Get a taste of your own medicine'},
-            {phrase: 'Go on a wild goose chase'},
-            {phrase: 'Give someone the cold shoulder'},
-            {phrase: 'A blessing in disguise'}
+            new Phrase('Once upon a time'),
+            new Phrase('Get a taste of your own medicine'),
+            new Phrase('Go on a wild goose chase'),
+            new Phrase('Give someone the cold shoulder'),
+            new Phrase('A blessing in disguise')
         ];
         this.activePhrase = null;
     };
@@ -22,8 +22,8 @@ class Game {
 
     getRandomPhrase() {
         const newPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].phrase;
-        const finalPhrase = new Phrase(newPhrase);
-        this.activePhrase = finalPhrase;
+        return new Phrase(newPhrase);
+        this.activePhrase = phrase.phrase;
     };
 
     /**
@@ -33,15 +33,13 @@ class Game {
     startGame() {
         const overlay = document.querySelector('#overlay');
         overlay.style.display = 'none';
-        const randomPhrase = game.getRandomPhrase();
-        const createNewPhrase = new Phrase(randomPhrase);
-        const newPhrase = createNewPhrase.phrase;
-        newPhrase.addPhraseToDisplay();
-        this.activePhrase = randomPhrase;
+        this.activePhrase = game.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+        this.activePhrase = this.activePhrase.phrase;
     };
 
     handleInteraction() {
-
+        phrase.checkLetter();
     }
 
     /**

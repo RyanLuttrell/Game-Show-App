@@ -31,12 +31,14 @@ class Phrase {
      */
 
     checkLetter(letter) {
-        const letterCheck = document.querySelectorAll('.letter');
-        if (letter === letterCheck) {
-            return true;
-        } else {
-            return false;
-        }
+        const letters = phrase.phrase;
+        for (let i = 0; i < game.activePhrase.length; i++) {
+           if (letter === letters[i]) {
+               return true;
+           } else {
+               return false;
+           }
+       } 
     };
 
     /**
@@ -45,6 +47,6 @@ class Phrase {
      */
 
     showMatchedLetter(letter) {
-
+        
     };
 }
