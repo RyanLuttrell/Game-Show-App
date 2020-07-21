@@ -21,7 +21,9 @@ class Game {
      */
 
     getRandomPhrase() {
-        return this.phrases[Math.floor(Math.random() * this.phrases.length)];
+        const newPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].phrase;
+        const finalPhrase = new Phrase(newPhrase);
+        this.activePhrase = finalPhrase;
     };
 
     /**
@@ -31,10 +33,43 @@ class Game {
     startGame() {
         const overlay = document.querySelector('#overlay');
         overlay.style.display = 'none';
-        const randomPhrase = game.getRandomPhrase().phrase;
-        const newPhrase = new Phrase(randomPhrase);
+        const randomPhrase = game.getRandomPhrase();
+        const createNewPhrase = new Phrase(randomPhrase);
+        const newPhrase = createNewPhrase.phrase;
         newPhrase.addPhraseToDisplay();
-        game.activePhrase = randomPhrase;
+        this.activePhrase = randomPhrase;
+    };
+
+    handleInteraction() {
+
+    }
+
+    /**
+     * Checks for winning move
+     * @return {boolean} True if game has been won, false if game wasn't won
+     */
+
+    checkForWin() {
+
+    };
+
+    /**
+     * Increases the value of the missed property
+     * removes a life from the scoreboard
+     * Checks if player has remaining lives and ends game if player is out
+     */
+
+    removeLife() {
+
+    };
+
+    /**
+     * Displays game over message
+     * @param {boolean} gameWon - Whether or not the user won the game
+     */
+
+    gameOver() {
+
     };
 
 }
