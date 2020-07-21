@@ -16,8 +16,12 @@ class Game {
     }
 
     /**
-     * Creates phrases for use in the game
-     * @return {array} an array of phrases that could be used in the game
+     * Selects random phrase from phrases property
+     * @return {Object} Phrase object chosed to be used
      */
+
+    getRandomPhrase() {
+        return this.phrases[Math.floor(Math.random() * this.phrases.length)];
+    }
 
 }
