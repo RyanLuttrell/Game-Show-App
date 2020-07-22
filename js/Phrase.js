@@ -12,8 +12,9 @@ class Phrase {
      */
 
     addPhraseToDisplay() {
-        const phraseId = document.querySelector('#phrase ul');
-        for (let i = 0; i < this.phrase.length; i++) {
+        const phrase = this.phrase;
+        const list = document.querySelector('#phrase ul');
+        for (let i = 0; i < phrase.length; i++) {
             const newLi = document.createElement('li')
             newLi.innerText = `${this.phrase[i]}`;
             if (newLi.innerText === ' ') {
@@ -21,7 +22,7 @@ class Phrase {
             } else {
                 newLi.className = `hide letter ${this.phrase[i]}`;
             }
-            phraseId.appendChild(newLi);
+            list.appendChild(newLi);
         }
     };
 
