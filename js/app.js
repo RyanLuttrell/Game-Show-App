@@ -7,6 +7,11 @@ startButton.addEventListener('click', () => {
         keys[i].disabled = '';
         keys[i].className = 'key';
     }
+    game.missed = 0;
+    const lives = document.querySelectorAll('.tries');
+    for (let i = 0; i < lives.length; i++) {
+        lives[i].innerHTML = `<img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>`
+    }
     game.startGame();
     console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`)
 })
