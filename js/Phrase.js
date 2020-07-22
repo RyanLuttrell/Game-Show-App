@@ -32,14 +32,7 @@ class Phrase {
      */
 
     checkLetter(letter) {
-        const letters = phrase.phrase;
-        for (let i = 0; i < game.activePhrase.length; i++) {
-           if (letter === letters[i]) {
-               return true;
-           } else {
-               return false;
-           }
-       } 
+        return this.phrase.includes(letter);
     };
 
     /**

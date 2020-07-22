@@ -22,8 +22,8 @@ class Game {
 
     getRandomPhrase() {
         const newPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].phrase;
-        return new Phrase(newPhrase);
         this.activePhrase = phrase.phrase;
+        return new Phrase(newPhrase);
     };
 
     /**
@@ -68,7 +68,12 @@ class Game {
      */
 
     removeLife() {
-        
+        const hearts = document.querySelectorAll('.tries');
+        this.missed++
+        if (this.missed === 5) {
+            this.gameOver(false);
+        }
+        hearts[this.missed-1].innerHTML = `<img src="images.lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
     };
 
     /**
@@ -76,8 +81,8 @@ class Game {
      * @param {boolean} gameWon - Whether or not the user won the game
      */
 
-    gameOver() {
-
+    gameOver(gameWon) {
+        
     };
 
 }
