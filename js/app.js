@@ -1,8 +1,8 @@
 const game = new Game();
 const startButton = document.querySelector('#btn__reset');
+const keys = document.querySelectorAll('.key');
 startButton.addEventListener('click', () => {
     const letters = document.querySelectorAll('ul li').forEach(letter => letter.remove());
-    const keys = document.querySelectorAll('.key');
     for (let i = 0; i < keys.length; i++) {
         keys[i].disabled = '';
         keys[i].className = 'key';
@@ -18,7 +18,19 @@ startButton.addEventListener('click', () => {
 
 document.querySelectorAll('.key').forEach(item => {
     item.addEventListener('click', e => {
+        console.log(e.target)
         game.handleInteraction(e.target);
     })
 });
 
+document.addEventListener('keydown', keyInput);
+
+function keyInput(e) {
+    for (let i = 0; i <keys.length; i++) {
+        if (keys[i].textContent === e.key) {
+            if (!keys[i].classList.contains('wrong') || keys[i].classList.contains('chosen')){
+                game.handleInteraction(keys[i]);
+            }
+        }
+    }
+}

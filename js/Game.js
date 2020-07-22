@@ -104,10 +104,12 @@ class Game {
         if (gameWon) {
             overlayMessage.textContent = "Congrats!! You won the game!";
             overlay.classList.remove('start');
+            overlay.classList.remove('lose');
             overlay.classList.add('win');
         } else {
             overlayMessage.textContent = "Sorry, better luck next time!";
             overlay.classList.remove('start');
+            overlay.classList.remove('win');
             overlay.classList.add('lose');
         }
     };
