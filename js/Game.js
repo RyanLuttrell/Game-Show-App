@@ -33,12 +33,17 @@ class Game {
     startGame() {
         const overlay = document.querySelector('#overlay');
         overlay.style.display = 'none';
-        this.activePhrase = game.getRandomPhrase();
+        this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
-        this.activePhrase = this.activePhrase.phrase;
     };
 
-    handleInteraction() {
+    /**
+     * Handles onscreen keyboard button clicks
+     * @param (HTMLButtonElement) button - the clicked element
+     */
+
+    handleInteraction(button) {
+        console.log(button);
     }
 
     /**
@@ -73,7 +78,7 @@ class Game {
         if (this.missed === 5) {
             this.gameOver(false);
         }
-        hearts[this.missed-1].innerHTML = `<img src="images.lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
+        hearts[this.missed-1].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
     };
 
     /**
@@ -82,7 +87,18 @@ class Game {
      */
 
     gameOver(gameWon) {
-        
+        const overlay = document.querySelector('#overlay');
+        overlay.style.display = '';
+        const overlayMessage = document.querySelector('#game-over-message');
+        if (gameWon) {
+            overlayMessage.textContent = "Congrats!! You won the game!";
+            overlay.classList.remove('start');
+            overlay.classList.add('win');
+        } else {
+            overlayMessage.textContent = "Sorry, better luck next time!";
+            overlay.classList.remove('start');
+            overlay.classList.add('lose');
+        }
     };
 
 }
