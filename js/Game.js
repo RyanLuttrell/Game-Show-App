@@ -43,7 +43,18 @@ class Game {
      */
 
     handleInteraction(button) {
-        console.log(button);
+        button.disabled = 'true';
+        if (game.activePhrase.checkLetter(button.textContent)) {
+            game.activePhrase.showMatchedLetter(button.textContent);
+            button.classList.add('chosen');
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
+
     }
 
     /**

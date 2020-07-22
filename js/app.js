@@ -1,10 +1,14 @@
-let game;
+const game = new Game();
 const startButton = document.querySelector('#btn__reset');
 startButton.addEventListener('click', () => {
-    game = new Game();
+    const letters = document.querySelectorAll('ul li').forEach(letter => letter.remove());
     game.startGame();
     console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`)
 })
 
-const keyboard = document.getElementById('qwerty')
-keyboard.addEventListener('click', game.handleInteraction(button));
+document.querySelectorAll('.key').forEach(item => {
+    item.addEventListener('click', e => {
+        game.handleInteraction(e.target);
+    })
+});
+
