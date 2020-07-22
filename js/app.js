@@ -6,7 +6,4 @@ startButton.addEventListener('click', () => {
     console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`)
 })
 
-const keyboard = document.querySelector('#qwerty');
-keyboard.addEventListener('click', (e) => {
-    console.log(e);
-})
+document.addEventListener('click', game.handleInteraction());
