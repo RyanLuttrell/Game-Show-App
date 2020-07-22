@@ -48,6 +48,10 @@ class Phrase {
      */
 
     showMatchedLetter(letter) {
-        
+        const selectedLetter = document.getElementsByClassName(letter);
+        for (let i = 0; i < selectedLetter.length; i++) {
+            selectedLetter[i].classList.remove('hide');
+            selectedLetter[i].classList.add('show');
+        }
     };
 }

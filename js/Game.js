@@ -47,7 +47,18 @@ class Game {
      */
 
     checkForWin() {
-
+        const winner = document.getElementsByClassName('letter');
+        let tally = 0;
+        for (let i = 0; i < winner.length; i++) {
+            if (winner[i].classList.contains('hide')) {
+                tally++
+            }
+        }
+        if (tally === 0) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     /**
@@ -57,7 +68,7 @@ class Game {
      */
 
     removeLife() {
-
+        
     };
 
     /**
