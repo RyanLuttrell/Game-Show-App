@@ -90,6 +90,7 @@ class Game {
             this.gameOver(false);
         }
         hearts[this.missed-1].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
+        hearts[this.missed-1].classList.add('animate__bounceIn')
     };
 
     /**
