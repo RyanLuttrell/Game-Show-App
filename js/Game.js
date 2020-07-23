@@ -22,7 +22,6 @@ class Game {
 
     getRandomPhrase() {
         const newPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)].phrase;
-        this.activePhrase = phrase.phrase;
         return new Phrase(newPhrase);
     };
 
@@ -90,7 +89,7 @@ class Game {
             this.gameOver(false);
         }
         hearts[this.missed-1].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
-        hearts[this.missed-1].classList.add('animate__bounceIn')
+        hearts[this.missed - 1].children[0].className = 'animated rotateIn';
     };
 
     /**
@@ -102,6 +101,10 @@ class Game {
         const overlay = document.querySelector('#overlay');
         overlay.style.display = '';
         const overlayMessage = document.querySelector('#game-over-message');
+        const disableKeys = document.querySelectorAll('.keys');
+        for (let i = 0; i < disableKeys.length; i++) {
+            disableKeys[i].disabled = 'true';
+        }
         if (gameWon) {
             overlayMessage.textContent = "Congrats!! You won the game!";
             overlay.classList.remove('start');
