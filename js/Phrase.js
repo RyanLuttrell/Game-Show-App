@@ -45,7 +45,6 @@ class Phrase {
         for (let i = 0; i < selectedLetter.length; i++) {
             selectedLetter[i].classList.remove('hide');
             selectedLetter[i].classList.add('show');
-            selectedLetter[i].classList.add('')
         }
     };
 }
