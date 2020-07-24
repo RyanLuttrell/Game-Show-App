@@ -85,11 +85,12 @@ class Game {
     removeLife() {
         const hearts = document.querySelectorAll('.tries');
         this.missed++
+        hearts[this.missed-1].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
+        hearts[this.missed - 1].children[0].classList.add('animated');
+        hearts[this.missed - 1].children[0].classList.add('rotateIn');
         if (this.missed === 5) {
             this.gameOver(false);
         }
-        hearts[this.missed-1].innerHTML = `<img src="images/lostHeart.png" alt="Lost Heart Icon" height="35" width="30">`
-        hearts[this.missed - 1].children[0].className = 'animated rotateIn';
     };
 
     /**
@@ -101,7 +102,18 @@ class Game {
         const overlay = document.querySelector('#overlay');
         overlay.style.display = '';
         const overlayMessage = document.querySelector('#game-over-message');
-        const disableKeys = document.querySelectorAll('.keys');
+        const disableKeys = document.querySelectorAll('.key');
+        const hearts = document.querySelectorAll('.tries');
+        const list = document.querySelectorAll('#phrase ul li');
+        for (let i = 0; i < list.length; i++) {
+            list[i].classList.remove('animated');
+            list[i].classList.remove('rotateInDownRight');
+        }
+ 
+        for (let i = 0; i < hearts.length; i++) {
+            hearts[i].children[0].classList.remove('animated');
+            hearts[i].children[0].classList.remove('rotateIn');
+        }
         for (let i = 0; i < disableKeys.length; i++) {
             disableKeys[i].disabled = 'true';
         }
